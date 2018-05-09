@@ -201,22 +201,22 @@ module RailsSemanticLogger
 
     # Before any initializers run, but after the gems have been loaded
     config.before_initialize do
-      # Replace the Mongo Loggers
-      Mongoid.logger          = SemanticLogger[Mongoid] if defined?(Mongoid)
-      Moped.logger            = SemanticLogger[Moped] if defined?(Moped)
-      Mongo::Logger.logger    = SemanticLogger[Mongo] if defined?(Mongo::Logger)
+      # # Replace the Mongo Loggers
+      # Mongoid.logger          = SemanticLogger[Mongoid] if defined?(Mongoid)
+      # Moped.logger            = SemanticLogger[Moped] if defined?(Moped)
+      # Mongo::Logger.logger    = SemanticLogger[Mongo] if defined?(Mongo::Logger)
 
-      # Replace the Resque Logger
-      Resque.logger           = SemanticLogger[Resque] if defined?(Resque) && Resque.respond_to?(:logger)
+      # # Replace the Resque Logger
+      # Resque.logger           = SemanticLogger[Resque] if defined?(Resque) && Resque.respond_to?(:logger)
 
-      # Replace the Sidekiq logger
-      Sidekiq::Logging.logger = SemanticLogger[Sidekiq] if defined?(Sidekiq)
+      # # Replace the Sidekiq logger
+      # Sidekiq::Logging.logger = SemanticLogger[Sidekiq] if defined?(Sidekiq)
 
-      # Replace the Sidetiq logger
-      Sidetiq.logger          = SemanticLogger[Sidetiq] if defined?(Sidetiq)
+      # # Replace the Sidetiq logger
+      # Sidetiq.logger          = SemanticLogger[Sidetiq] if defined?(Sidetiq)
 
-      # Replace the Bugsnag logger
-      Bugsnag.configure { |config| config.logger = SemanticLogger[Bugsnag] } if defined?(Bugsnag)
+      # # Replace the Bugsnag logger
+      # Bugsnag.configure { |config| config.logger = SemanticLogger[Bugsnag] } if defined?(Bugsnag)
 
       # Set the logger for concurrent-ruby
       Concurrent.global_logger = SemanticLogger[Concurrent] if defined?(Concurrent)
